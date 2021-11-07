@@ -1,20 +1,10 @@
 AWSTemplateFormatVersion: 2010-09-09
-Transform: 'AWS::Serverless-2016-10-31'
+Transform: "AWS::Serverless-2016-10-31"
 Description: P1
 
 Resources:
-  A3b1website:
-    Type: 'AWS::S3::Bucket'
-    Properties:
-      BucketName: "a3b1website"
-
-  A3b2photostore:
-    Type: 'AWS::S3::Bucket'
-    Properties:
-      BucketName: "a3b2photostore" 
-
   A3L2:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       FunctionName: A3L2
       Handler: lambda_function.lambda_handler
@@ -23,7 +13,7 @@ Resources:
       Description: LF2
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:iam::098015424271:role/service-role/LF2-role-bhscurau'
+      Role: "arn:aws:iam::098015424271:role/service-role/LF2-role-bhscurau"
       Events:
         getAZsAPI:
           Type: Api
@@ -35,7 +25,7 @@ Resources:
           REGION: us-east-1
 
   A3L1:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       FunctionName: A3L1
       Handler: lambda_function.lambda_handler
@@ -44,13 +34,13 @@ Resources:
       Description: LF1
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:iam::098015424271:role/service-role/LF1_index_photos-role-d7wf3odh'
+      Role: "arn:aws:iam::098015424271:role/service-role/LF1_index_photos-role-d7wf3odh"
       Environment:
         Variables:
           REGION: us-east-1
 
   A3L3:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       FunctionName: A3L3
       Handler: lambda_function.lambda_handler
@@ -59,7 +49,7 @@ Resources:
       Description: LF3
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:iam::098015424271:role/service-role/upload_to_s3-role-9x78khho'
+      Role: "arn:aws:iam::098015424271:role/service-role/upload_to_s3-role-9x78khho"
       Events:
         getAZsAPI:
           Type: Api
@@ -69,16 +59,16 @@ Resources:
       Environment:
         Variables:
           REGION: us-east-1
-      
+
   ElasticsearchDomain:
-    Type: 'AWS::Elasticsearch::Domain'
+    Type: "AWS::Elasticsearch::Domain"
     Properties:
       DomainName: "photo-es"
-      ElasticsearchVersion: '7.4'
+      ElasticsearchVersion: "7.4"
       ElasticsearchClusterConfig:
-        DedicatedMasterEnabled: 'false'
-        InstanceCount: '2'
-        ZoneAwarenessEnabled: 'true'
+        DedicatedMasterEnabled: "false"
+        InstanceCount: "2"
+        ZoneAwarenessEnabled: "true"
         InstanceType: "t2.small.elasticsearch"
       EBSOptions:
         EBSEnabled: true
@@ -86,14 +76,14 @@ Resources:
         VolumeSize: 10
         VolumeType: "gp2"
       SnapshotOptions:
-        AutomatedSnapshotStartHour: '0'
+        AutomatedSnapshotStartHour: "0"
       AccessPolicies:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
-              AWS: '*'
-            Action: 'es:*'
-            Resource: 'arn:aws:es:us-east-1:098015424271:domain/photos/*'
+              AWS: "*"
+            Action: "es:*"
+            Resource: "arn:aws:es:us-east-1:098015424271:domain/photos/*"
       AdvancedOptions:
         rest.action.multi.allow_explicit_index: "true"
