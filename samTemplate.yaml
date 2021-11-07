@@ -13,7 +13,7 @@ Resources:
       Description: LF2
       MemorySize: 128
       Timeout: 30
-      Role: "arn:aws:iam::098015424271:role/service-role/LF2-role-bhscurau"
+      Role: "arn:aws:iam::353077126427:role/service-role/LF2-search-photos-role-eev8yaaw"
       Events:
         getAZsAPI:
           Type: Api
@@ -29,33 +29,12 @@ Resources:
     Properties:
       FunctionName: LF2-search-photos
       Handler: lambda_function.lambda_handler
-      Runtime: python3.7
+      Runtime: python3.6
       CodeUri: ./LF1
       Description: LF1
       MemorySize: 128
       Timeout: 30
-      Role: "arn:aws:iam::098015424271:role/service-role/LF1_index_photos-role-d7wf3odh"
-      Environment:
-        Variables:
-          REGION: us-east-1
-
-  A3L3:
-    Type: "AWS::Serverless::Function"
-    Properties:
-      FunctionName: A3L3
-      Handler: lambda_function.lambda_handler
-      Runtime: python3.6
-      CodeUri: ./lambda_function_3.py
-      Description: LF3
-      MemorySize: 128
-      Timeout: 30
-      Role: "arn:aws:iam::098015424271:role/service-role/upload_to_s3-role-9x78khho"
-      Events:
-        getAZsAPI:
-          Type: Api
-          Properties:
-            Path: /uploadimage
-            Method: put
+      Role: "arn:aws:iam::353077126427:role/service-role/LF1-index-photos-role-leftbx4t"
       Environment:
         Variables:
           REGION: us-east-1
@@ -64,7 +43,7 @@ Resources:
     Type: "AWS::Elasticsearch::Domain"
     Properties:
       DomainName: "photo-es"
-      ElasticsearchVersion: "7.4"
+      ElasticsearchVersion: "5.1"
       ElasticsearchClusterConfig:
         DedicatedMasterEnabled: "false"
         InstanceCount: "2"
@@ -84,6 +63,6 @@ Resources:
             Principal:
               AWS: "*"
             Action: "es:*"
-            Resource: "arn:aws:es:us-east-1:098015424271:domain/photos/*"
+            Resource: "arn:aws:es:us-east-1:353077126427:domain/photos/*"
       AdvancedOptions:
         rest.action.multi.allow_explicit_index: "true"
