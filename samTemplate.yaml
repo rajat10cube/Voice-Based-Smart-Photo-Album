@@ -22,7 +22,7 @@ Resources:
             Method: post
       Environment:
         Variables:
-          REGION: us-east-1
+          REGION: us-east-2
 
   A3L1:
     Type: "AWS::Serverless::Function"
@@ -37,4 +37,4 @@ Resources:
       Role: "arn:aws:iam::353077126427:role/service-role/LF1-index-photos-role-leftbx4t"
       Environment:
         Variables:
-          REGION: us-east-1
+          REGION: us-east-2
