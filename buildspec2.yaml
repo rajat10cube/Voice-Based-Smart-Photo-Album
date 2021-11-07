@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.6
+  build:
+    commands:
+      - pip install --upgrade pip
+      - pip install pipenv --user
+      - pipenv install awscli aws-sam-cli
+      - pipenv run sam package --template-file samTemplate2.yml --s3-bucket b1-photos-album --output-template-file outputTemplate2.yml
+artifacts:
+  files:
+    - samTemplate2.yaml
+    - outputTemplate2.yaml
