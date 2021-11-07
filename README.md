@@ -152,7 +152,7 @@ This assignment has eight components:
 
 ## WORKFLOW DIAGRAM
 
-![alt text](https://github.com/nikhilkhaneja/Voice-Based-Photo-Search-Album/blob/main/architecture_diagram.png)
+![alt text](https://github.com/rajat10cube/Voice-Based-Smart-Photo-Album/blob/main/Architecture/diagram.png)
 
 ## Sample Use Case
 
