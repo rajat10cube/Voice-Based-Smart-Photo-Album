@@ -4,7 +4,7 @@ import requests
 from requests_aws4auth import AWS4Auth
 
 def push_to_lex(query):
-    #added new comment 1 for checking
+    #added old comment 1 for checking
     lex = boto3.client('lex-runtime')
     print("lex client initialized")
     response = lex.post_text(
