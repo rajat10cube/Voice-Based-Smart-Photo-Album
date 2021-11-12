@@ -10,6 +10,7 @@ from requests_aws4auth import AWS4Auth
 
 
 def rekognition_function(bucket_name, file_name):
+    #adding comment in function
     print("Inside function")
     print(bucket_name)
     print(file_name)
