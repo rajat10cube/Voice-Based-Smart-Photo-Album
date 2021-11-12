@@ -80,7 +80,7 @@ Resources:
   ElasticSearchPhotoAlbum:
     Type: AWS::Elasticsearch::Domain
     Properties:
-      DomainName: photos
+      DomainName: photo
       AccessPolicies:
         Version: 2012-10-17
         Statement:
@@ -88,7 +88,7 @@ Resources:
             Principal:
               AWS: "*"
             Action: es:*
-            Resource: "arn:aws:es:us-east-1:353077126427:domain/photos/*"
+            Resource: "arn:aws:es:us-east-1:353077126427:domain/photo/*"
       ElasticsearchClusterConfig:
         InstanceCount: 1
         InstanceType: t3.small.elasticsearch
