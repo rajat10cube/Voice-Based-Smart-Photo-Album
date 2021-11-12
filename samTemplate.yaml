@@ -59,6 +59,7 @@ Resources:
         Key: "ApiPhotoAlbum-dev-swagger.yaml"
       Description: "Rest api having search photos and upload photos methods."
       Name: RestApiPhotoAlbum
+      FailOnWarnings: true
       EndpointConfiguration:
         Types:
           - "REGIONAL"
