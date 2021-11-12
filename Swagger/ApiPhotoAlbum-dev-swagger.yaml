@@ -1,25 +1,25 @@
 ---
 swagger: "2.0"
 info:
-  description: "AI Photo Search application, built during the Cloud and Big Data course\
+  description:
+    "AI Photo Search application, built during the Cloud and Big Data course\
     \ at NYU."
   version: "1.0.0"
   title: "AI Photo Search"
-host: "eixjt49x3a.execute-api.us-east-1.amazonaws.com"
 basePath: "/dev"
 schemes:
-- "https"
+  - "https"
 paths:
   /search:
     get:
       operationId: "searchPhotos"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "q"
-        in: "query"
-        required: false
-        type: "string"
+        - name: "q"
+          in: "query"
+          required: false
+          type: "string"
       responses:
         "200":
           description: "200 response"
@@ -53,9 +53,9 @@ paths:
         type: "aws_proxy"
     options:
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       responses:
         "200":
           description: "200 response"
@@ -77,35 +77,35 @@ paths:
               method.response.header.Access-Control-Allow-Headers: "'*'"
               method.response.header.Access-Control-Allow-Origin: "'*'"
         requestTemplates:
-          application/json: "{\"statusCode\": 200}"
+          application/json: '{"statusCode": 200}'
         passthroughBehavior: "when_no_match"
         type: "mock"
   /upload/{bucket}/{key}:
     put:
       operationId: "uploadPhoto"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "Content-Type"
-        in: "header"
-        required: false
-        type: "string"
-      - name: "Accept"
-        in: "header"
-        required: false
-        type: "string"
-      - name: "x-amz-meta-customLabels"
-        in: "header"
-        required: false
-        type: "string"
-      - name: "key"
-        in: "path"
-        required: true
-        type: "string"
-      - name: "bucket"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "Content-Type"
+          in: "header"
+          required: false
+          type: "string"
+        - name: "Accept"
+          in: "header"
+          required: false
+          type: "string"
+        - name: "x-amz-meta-customLabels"
+          in: "header"
+          required: false
+          type: "string"
+        - name: "key"
+          in: "path"
+          required: true
+          type: "string"
+        - name: "bucket"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "200 response"
@@ -166,18 +166,18 @@ paths:
         type: "aws"
     options:
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "key"
-        in: "path"
-        required: true
-        type: "string"
-      - name: "bucket"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "key"
+          in: "path"
+          required: true
+          type: "string"
+        - name: "bucket"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "200 response"
@@ -199,7 +199,7 @@ paths:
               method.response.header.Access-Control-Allow-Headers: "'*'"
               method.response.header.Access-Control-Allow-Origin: "'*'"
         requestTemplates:
-          application/json: "{\"statusCode\": 200}"
+          application/json: '{"statusCode": 200}'
         passthroughBehavior: "when_no_match"
         type: "mock"
 definitions:
