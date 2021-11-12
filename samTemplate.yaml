@@ -13,9 +13,9 @@ Resources:
     Properties:
       BucketName: photosalbumb1
 
-LambdaExecutionRoleLF1:
-    Type: 'AWS::IAM::Role'
-    Properties: 
+  LambdaExecutionRoleLF1:
+    Type: "AWS::IAM::Role"
+    Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -24,9 +24,9 @@ LambdaExecutionRoleLF1:
               Service:
                 - lambda.amazonaws.com
             Action:
-              - 'sts:AssumeRole'
-      Description: 'The execution role for the lambda LF1.'
-      Path: '/'
+              - "sts:AssumeRole"
+      Description: "The execution role for the lambda LF1."
+      Path: "/"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
       Policies:
@@ -35,7 +35,7 @@ LambdaExecutionRoleLF1:
             Version: "2012-10-17"
             Statement:
               - Effect: Allow
-                Action: 
+                Action:
                   - s3:GetObject
                 Resource: "arn:aws:s3:::photosalbumb2"
               - Effect: Allow
