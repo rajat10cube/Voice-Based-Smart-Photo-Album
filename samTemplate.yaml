@@ -52,6 +52,7 @@ LambdaExecutionRoleLF1:
   IndexPhotosLF1:
     Type: "AWS::Serverless::Function"
     Properties:
+      DependsOn: LambdaExecutionRoleLF1
       FunctionName: IndexPhotosLF1
       Handler: lambda_function.lambda_handler
       Runtime: python3.6
@@ -59,7 +60,7 @@ LambdaExecutionRoleLF1:
       Description: LF1
       MemorySize: 128
       Timeout: 30
-      Role: "arn:aws:iam::353077126427:role/service-role/LF1-index-photos-role-leftbx4t"
+      Role: !GetAtt LambdaExecutionRoleLF1.Arn
       Environment:
         Variables:
           Region: us-east-1
@@ -74,6 +75,7 @@ LambdaExecutionRoleLF1:
   SearchPhotosLF2:
     Type: "AWS::Serverless::Function"
     Properties:
+      DependsOn: LambdaExecutionRoleLF1
       FunctionName: SearchPhotosLF2
       Handler: lambda_function.lambda_handler
       Runtime: python3.6
@@ -81,7 +83,7 @@ LambdaExecutionRoleLF1:
       Description: LF2
       MemorySize: 128
       Timeout: 30
-      Role: "arn:aws:iam::353077126427:role/service-role/LF2-search-photos-role-eev8yaaw"
+      Role: !GetAtt LambdaExecutionRoleLF1.Arn
       Layers: [arn:aws:lambda:us-east-1:353077126427:layer:Requests:2]
       Environment:
         Variables:
