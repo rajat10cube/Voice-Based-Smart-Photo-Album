@@ -62,6 +62,10 @@ paths:
               type: "string"
   /upload/{bucket}/{key}:
     put:
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        type: aws
+        uri: "arn:aws:apigateway:us-east-1:s3:path/{bucket}/{key}"
       operationId: "uploadPhoto"
       produces:
         - "application/json"
