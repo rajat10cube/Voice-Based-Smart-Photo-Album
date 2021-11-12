@@ -76,17 +76,9 @@ Resources:
           - !Ref RestApiPhotoAlbum
           - "/resources/*/methods/GET"
 
-  # ApiGatewayResource:
-  # Type: AWS::ApiGateway::Resource
-  # Properties:
-  #   ParentId: !GetAtt RestApiPhotoAlbum.RootResourceId
-  #   PathPart: 'lambda'
-  #   RestApiId: !Ref RestApiPhotoAlbum
-
-  # ApiGatewayMethod:
-  #   Type: AWS::ApiGateway::Method
-  #   Properties:
-  #     HttpMethod:
-  #     Integration:
-  #       Type: AWS
-  #       Uri: arn:aws:iam::353077126427:role/API_S3-Access
+  RestApiPhotoAlbumDeployment:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      Description: The v1 deployment of photo album api
+      RestApiId: !Ref RestApiPhotoAlbum
+      StageName: v1
