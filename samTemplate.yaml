@@ -25,8 +25,7 @@ Resources:
       Events:
         Type: S3
         Properties:
-          Bucket:
-            Ref: photos-album-b2
+          Bucket: photos-album-b2
           Events: s3:ObjectCreated:Put
 
   A3L2:
