@@ -13,6 +13,42 @@ Resources:
     Properties:
       BucketName: photosalbumb1
 
+LambdaExecutionRoleLF1:
+    Type: 'AWS::IAM::Role'
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: 'The execution role for the lambda LF1.'
+      Path: '/'
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      Policies:
+        - PolicyName: "LambdaLF1Policy"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - s3:GetObject
+                Resource: "arn:aws:s3:::photosalbumb2"
+              - Effect: Allow
+                Action:
+                  - rekognition:DetectLabels
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - es:ESHttpPut
+                  - es:ESHttpPost
+                Resource: "*"
+      RoleName: "LambdaExecutionRoleLF1"
+
   IndexPhotosLF1:
     Type: "AWS::Serverless::Function"
     Properties:
@@ -84,7 +120,7 @@ Resources:
       FunctionName: !Ref IndexPhotosLF1
       Principal: s3.amazonaws.com
       SourceAccount: !Ref "AWS::AccountId"
-      SourceArn: "arn:aws:s3:::IndexPhotosLF1"
+      SourceArn: "arn:aws:s3:::photosalbumb2"
 
   ElasticSearchPhotoAlbum:
     Type: AWS::Elasticsearch::Domain
