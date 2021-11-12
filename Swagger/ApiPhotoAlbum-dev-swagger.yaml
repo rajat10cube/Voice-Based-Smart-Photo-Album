@@ -65,6 +65,7 @@ paths:
       x-amazon-apigateway-integration:
         httpMethod: POST
         type: aws
+        credentials: "arn:aws:iam::353077126427:role/API_S3-Access"
         uri: "arn:aws:apigateway:us-east-1:s3:path/{bucket}/{key}"
       operationId: "uploadPhoto"
       produces:
