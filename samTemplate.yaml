@@ -89,6 +89,9 @@ Resources:
               AWS: "*"
             Action: es:*
             Resource: "arn:aws:es:us-east-1:353077126427:domain/photo/*"
+            Condition:
+              IpAddress:
+                aws:SourceIp: ["74.72.185.149/24"]
       ElasticsearchClusterConfig:
         InstanceCount: 1
         InstanceType: t3.small.elasticsearch
