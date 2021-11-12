@@ -7,7 +7,13 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: photosalbumb2
-  A3L1:
+
+  photosalbumb1:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: photosalbumb1
+
+  IndexPhotosLF1:
     Type: "AWS::Serverless::Function"
     Properties:
       FunctionName: IndexPhotosLF1
@@ -29,7 +35,7 @@ Resources:
             Bucket: !Ref photosalbumb2
             Events: s3:ObjectCreated:Put
 
-  A3L2:
+  SearchPhotosLF2:
     Type: "AWS::Serverless::Function"
     Properties:
       FunctionName: SearchPhotosLF2
@@ -44,3 +50,15 @@ Resources:
       Environment:
         Variables:
           Region: us-east-1
+
+  RestApiPhotoAlbum:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      BodyS3Location:
+        Bucket: b3-photos-album
+        Key: "ApiPhotoAlbum-dev-swagger.yaml"
+      Description: "Rest api having search photos and upload photos methods."
+      Name: RestApiPhotoAlbum
+      EndpointConfiguration:
+        Types:
+          - "REGIONAL"
