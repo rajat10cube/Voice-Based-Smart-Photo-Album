@@ -3,6 +3,10 @@ Transform: "AWS::Serverless-2016-10-31"
 Description: P1
 
 Resources:
+  A2S1:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: photos-album-b2
   A3L1:
     Type: "AWS::Serverless::Function"
     Properties:
