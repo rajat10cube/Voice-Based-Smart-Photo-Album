@@ -76,9 +76,10 @@ Resources:
           - !Ref RestApiPhotoAlbum
           - "/resources/*/methods/GET"
 
-  # RestApiPhotoAlbumDeployment:
-  #   Type: AWS::ApiGateway::Deployment
-  #   Properties:
-  #     Description: The v1 deployment of photo album api
-  #     RestApiId: !Ref RestApiPhotoAlbum
-  #     StageName: v1
+  RestApiPhotoAlbumDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn: [RestApiPhotoAlbum]
+    Properties:
+      Description: The v1 deployment of photo album api
+      RestApiId: !Ref RestApiPhotoAlbum
+      StageName: v1
