@@ -77,6 +77,33 @@ Resources:
           - !Ref RestApiPhotoAlbum
           - "/resources/*/methods/GET"
 
+  ElasticSearchPhotoAlbum:
+    Type: AWS::Elasticsearch::Domain
+    Properties:
+      DomainName: photos
+      AccessPolicies:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: "*"
+            Action: es:*
+            Resource: "arn:aws:es:us-east-1:353077126427:domain/photos/*"
+      ElasticsearchClusterConfig:
+        InstanceCount: 1
+        InstanceType: t3.small.elasticsearch
+      ElasticsearchVersion: 7.10
+      DomainEndpointOptions:
+        EnforceHTTPS: true
+      EncryptionAtRestOptions:
+        Enabled: true
+      NodeToNodeEncryptionOptions:
+        Enabled: true
+      EBSOptions:
+        EBSEnabled: true
+        VolumeSize: 10
+        VolumeType: gp2
+
   RestApiPhotoAlbumDeployment:
     Type: AWS::ApiGateway::Deployment
     DependsOn: [RestApiPhotoAlbum]
