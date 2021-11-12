@@ -3,10 +3,10 @@ Transform: "AWS::Serverless-2016-10-31"
 Description: P1
 
 Resources:
-  PhotosAlbumB2:
+  photosalbumb2:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: PhotosAlbumB2
+      BucketName: photosalbumb2
   A3L1:
     Type: "AWS::Serverless::Function"
     Properties:
@@ -26,7 +26,7 @@ Resources:
         S3Event:
           Type: S3
           Properties:
-            Bucket: !Ref PhotosAlbumB2
+            Bucket: !Ref photosalbumb2
             Events: s3:ObjectCreated:Put
 
   A3L2:
