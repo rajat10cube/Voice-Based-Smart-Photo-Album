@@ -12,7 +12,7 @@ Implemented a photo album web application, that can be searched using natural la
 
 ## DESCRIPTION:
 
-This assignment has eight components:
+This project had eight components:
 
 **1. Launch an ElasticSearch instance:**
 
